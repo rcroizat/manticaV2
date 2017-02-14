@@ -1,0 +1,48 @@
+<ion-header>
+    <ion-navbar primary>
+        <button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Nos agences</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+<ion-card *ngFor="let agence of agences">
+<!--   <img src="img/mapStMich.png"/> -->
+
+ <ion-card-content>
+    <ion-card-title>
+      {{agence.nom}}
+      </ion-card-title>
+      <p>
+      {{agence.adresse}}<br>
+      {{agence.cp}} {{agence.nom}}<br>
+      Tél : {{agence.telString}}
+      contact : {{agence.mail}}
+    </p>
+ 
+  </ion-card-content>
+    <ion-row no-padding>
+      <ion-col width-33>
+        <button clear small primary (click)="map(agence.shortcut)" >
+          <ion-icon name='map' class="agence"></ion-icon>
+          Itinéraire
+        </button>
+      </ion-col>
+      <ion-col width-33>
+        <button clear small primary>
+          <ion-icon name='call'  class="agence"></ion-icon>
+          <a href="tel:{{agence.tel}}"> Appeler</a>
+        </button>
+      </ion-col>
+      <ion-col width-33>
+        <button clear small primary (click)="contact(agence.mail, agence.nom)">
+          <ion-icon name='mail'  class="agence"></ion-icon>
+          Contact
+        </button>
+      </ion-col>
+    </ion-row>
+</ion-card>
+</ion-content>

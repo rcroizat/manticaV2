@@ -1,0 +1,46 @@
+﻿<ion-header>
+    <ion-navbar primary>
+        <button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Frais de notaire</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <ion-list>
+        <ion-item>
+            <ion-label inputLight primary>
+                <ion-icon name="home"></ion-icon>Type de logement</ion-label>
+            <ion-select (ionChange)="calcul()" cancelText="Annuler" [(ngModel)]="type">
+                <ion-option value="ancien">Ancien</ion-option>
+                <ion-option value="neuf">Neuf</ion-option>
+                <ion-option value="terrain">Terrain</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label inputLight primary>
+                <ion-icon name="map"></ion-icon>
+                Département</ion-label>
+            <ion-select (ionChange)="calcul()" cancelText="Annuler" [(ngModel)]="departement">
+                <ion-option *ngFor="let dep of departements" value="{{dep.value}}">{{dep.label}}</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>
+                <ion-icon name="logo-euro"></ion-icon>
+                Montant de l'achat</ion-label>
+            <ion-input type="number" (keyup)="calcul()" [(ngModel)]="montantNotaire"></ion-input>
+        </ion-item>
+    </ion-list>
+    <ion-row center>
+        <ion-col center width-66>
+            <h5><b>Frais de notaire : </b></h5>
+            <div *ngIf="result"><b>{{result}} €</b>
+                <p class="condition"><i>Ce montant est établi à partir des informations que vous nous avez données. Il ne constitue pas une offre contractuelle et ne saurait engager la responsabilité de la société Mantica.</i></p>
+            </div>
+        </ion-col>
+        <ion-col>
+            <button *ngIf="result" primary (click)="detail()">Détails</button>
+        </ion-col>
+    </ion-row>
+</ion-content>

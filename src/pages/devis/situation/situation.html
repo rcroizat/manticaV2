@@ -1,0 +1,39 @@
+<ion-header>
+    <ion-navbar primary>
+        <button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Votre situation</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <form [formGroup]="situationForm" (ngSubmit)="next()" >
+
+        <ion-item>
+          <ion-label inputLight>
+                <ion-icon name="home"></ion-icon>
+                Votre situation actuelle*</ion-label>
+            <ion-select okText="Ok" cancelText="Annuler"  [(ngModel)]="data.situationActuelle" formControlName="situationActuelle">
+                <ion-option value="Locataire">Locataire</ion-option>
+                <ion-option value="Proprietaire">Propriétaire</ion-option>
+                <ion-option value="Logement de fonciton">Logement de fonction</ion-option>
+                <ion-option value="Hébergé gratuitement">Hébergé à titre gratuit</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label inputLight>
+                <ion-icon name="home"></ion-icon>
+                Votre niveau d'avancement*</ion-label>
+            <ion-select okText="Ok" cancelText="Annuler" [(ngModel)]="data.avancement"  formControlName="avancement">
+                <ion-option value="Début des recherches">Début des recherches</ion-option>
+                <ion-option value="Recherche active">Recherche active</ion-option>
+                <ion-option value="romesse d'achat signée">Promesse d'achat signée</ion-option>
+                <ion-option value="Signature prochaine">Vous allez signer prochainement</ion-option>
+            </ion-select>
+        </ion-item>
+
+
+  <button block primary type="submit" [disabled]="!situationForm.valid" >Suivant
+  </button>
+</form>
+</ion-content>

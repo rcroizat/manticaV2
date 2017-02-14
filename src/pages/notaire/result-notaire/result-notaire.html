@@ -1,0 +1,67 @@
+
+<ion-header>
+   <ion-navbar primary>
+        <button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Résultats</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+ <ion-list>
+        <ion-item>
+	        <ion-row>
+		        <ion-col width-25>
+		      	  Emoluments TTC <br>du notaire
+		        </ion-col>
+		        <ion-col offset-50 width-25>
+		     	   {{emoluments_notaire}} €
+		        </ion-col>
+	        </ion-row>
+        </ion-item>
+        <ion-item>
+	        <ion-row>
+		       <ion-col width-25>
+		      	 Droits et taxes
+		        </ion-col>
+		     <ion-col offset-50 width-25>
+		     	  {{droit_et_taxes_sum}} €
+		        </ion-col>
+	        </ion-row>
+        </ion-item>
+        <ion-item>
+	        <ion-row>
+		        <ion-col width-25>
+		      	 Emoluments de formalités<br> et débours (1)
+		        </ion-col>
+		          <ion-col offset-50 width-25>
+		     	   {{emoluments_formalites}} €
+		        </ion-col>
+	        </ion-row>
+        </ion-item>
+        <ion-item>
+	        <ion-row>
+		        <ion-col width-25>
+		      	  Contribution de sécurité<br> immobilière
+		        </ion-col>
+		        <ion-col offset-50 width-25>
+		     	   {{securite_immobilier_fn}} €
+		        </ion-col>
+	        </ion-row>
+        </ion-item>
+        <ion-item>
+	        <ion-row>
+		        <ion-col width-25>
+		      	  <b>Total</b>
+		        </ion-col>
+		        <ion-col offset-50 width-25>
+		     	   <b>{{result}} €</b>
+		        </ion-col>
+	        </ion-row>
+        </ion-item>
+        <p class="condition" ><i>(1) montant variable, évalué de façon approximative</i></p>
+</ion-list>
+</ion-content>

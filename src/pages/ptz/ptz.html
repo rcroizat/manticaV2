@@ -1,0 +1,72 @@
+
+<ion-header>
+    <ion-navbar primary>
+        <button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Prêt à taux zéro</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <ion-list>
+        <ion-item>
+            <ion-label floating>
+                <ion-icon name="map"></ion-icon>
+                Votre ville</ion-label>
+            <ion-input type="string" #ville [(ngModel)]="villePtz" (keyup)="getItems($event)"></ion-input>
+           
+        </ion-item>
+
+         <ion-item *ngFor="let zone of zoneCut"  (click)="insertInput(zone)">
+                {{ zone.ville }}
+                {{ zone.cp }}
+            </ion-item>
+
+        <ion-item>
+            <ion-label inputLight>
+                <ion-icon name="people"></ion-icon>
+                Nombre de personnes au foyer</ion-label>
+            <ion-select [(ngModel)]="nbrPers" #pers cancelText="Annuler">
+                <ion-option value="1">1</ion-option>
+                <ion-option value="2">2</ion-option>
+                <ion-option value="3">3</ion-option>
+                <ion-option value="4">4</ion-option>
+                <ion-option value="5">5</ion-option>
+                <ion-option value="6">6</ion-option>
+                <ion-option value="7">7</ion-option>
+                <ion-option value="8">8 et plus</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>
+                <ion-icon name="logo-euro"></ion-icon>
+                Revenu Fiscal de référence</ion-label>
+            <ion-input [(ngModel)]="revenuFiscal" #rev  type="number"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>
+                <ion-icon name="logo-euro"></ion-icon>
+                Coût du projet</ion-label>
+            <ion-input #coutPrj  type="number"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>
+                <ion-icon name="logo-euro"></ion-icon>
+                Apport personnel</ion-label>
+            <ion-input type="number" #apport></ion-input>
+        </ion-item>
+        <ion-item >
+            <ion-label inputLight>
+                <ion-icon name="home"></ion-icon>
+                Type de logement</ion-label>
+            <ion-select #etat [(ngModel)]="bienPtz" cancelText="Annuler" class="item-text-wrap">
+                <ion-option value="neuf">Neuf ou assimilé</ion-option>
+                <ion-option value="hlm">HLM ancien</ion-option>
+                <ion-option value="ancienTravaux">Ancien avec travaux</ion-option>
+            </ion-select>
+        </ion-item>
+        
+      <button primary [disabled]=" !nbrPers || !rev.value || !coutPrj.value || !bienPtz || !zoneField || !villePtz" (click)="CalculPTZ(rev.value, coutPrj.value , apport.value)">Calcul</button>
+      <p *ngIf="reponse"><b>Compte tenu des éléments que vous avez indiqués, vous n'avez pas droit au Prêt à Taux Zéro plus 2016.</b> </p>
+    </ion-list>
+</ion-content>

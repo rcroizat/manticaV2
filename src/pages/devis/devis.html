@@ -1,0 +1,101 @@
+<ion-header>
+    <ion-navbar primary>
+        <button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Demande de devis</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+ <form  [formGroup]="devisForm" (ngSubmit)="next()" >
+<ion-list>
+        <ion-item>
+              <ion-label >
+                <ion-icon name="home"  ></ion-icon>
+                Votre projet immobilier*</ion-label>
+            <ion-select okText="Ok" cancelText="Annuler" [(ngModel)]="data.projet" formControlName="projet">
+                <ion-option value="Acquisition">Acquisition</ion-option>
+                <ion-option value="Rachat de prêt immobilier en cours">Rachat de prêt en cours</ion-option>
+            </ion-select>
+        </ion-item>    
+        <ion-item>
+            <ion-label floating>
+                <ion-icon name="map"></ion-icon>
+                Code postal*</ion-label>
+            <ion-input type="number" 
+             [(ngModel)]="data.cpProjet"  
+             formControlName="cpProjet" 
+             ></ion-input>
+            
+        </ion-item>
+
+                    
+        <ion-item>
+            <ion-label floating>
+                <ion-icon name="pin"></ion-icon>
+                Ville du bien*</ion-label>
+            <ion-input type="text" [(ngModel)]="data.villeProjet"  formControlName="villeProjet"></ion-input>
+        </ion-item>
+         <ion-item>
+              <ion-label >
+                <ion-icon name="home"></ion-icon>
+                Type de bien*</ion-label>
+            <ion-select okText="Ok" cancelText="Annuler" [(ngModel)]="data.typeProjet"  formControlName="typeProjet">
+                <ion-option value="Maison">Maison</ion-option>
+                <ion-option value="Appartement">Appartement</ion-option>
+                <ion-option value="Terrain">Terrain</ion-option>
+                <ion-option value="Terrain + construction">Terrain + construction</ion-option>
+                <ion-option value="autres">Autres</ion-option>
+            </ion-select>
+        </ion-item>
+         <ion-item>
+              <ion-label >
+                <ion-icon name="home"></ion-icon>
+                Etat du bien*</ion-label>
+            <ion-select okText="Ok" cancelText="Annuler" [(ngModel)]="data.etat"  formControlName="etat">
+                <ion-option value="Ancien">Ancien</ion-option>
+                <ion-option value="Neuf">Neuf</ion-option>
+                <ion-option value="Revente d un bien de parc sociale">Revente d'un bien de parc social</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label >
+                <ion-icon name="bulb"></ion-icon>
+                Norme</ion-label>
+            <ion-select okText="Ok" cancelText="Annuler" [(ngModel)]="data.norme" [ngModelOptions]="{standalone: true}">
+                <ion-option value="a">a</ion-option>
+                <ion-option value="b">b</ion-option>
+                <ion-option value="c">c</ion-option>
+                <ion-option value="d">d</ion-option>
+                <ion-option value="e">e</ion-option>
+                <ion-option value="f">f</ion-option>
+                <ion-option value="g">g</ion-option>
+            </ion-select>
+        </ion-item>
+       
+        <ion-item>
+            <ion-label >
+                <ion-icon name="leaf"></ion-icon>
+                Norme BBC / Non BBC</ion-label>
+            <ion-select  [(ngModel)]="data.bbc" [ngModelOptions]="{standalone: true}">
+                <ion-option value="bbc">BBC</ion-option>
+                <ion-option value="non bbc">Non BBC</ion-option>
+            </ion-select>
+        </ion-item>
+       
+        <ion-item>
+            <ion-label >
+                <ion-icon name="home"></ion-icon>
+                Usage du bien*</ion-label>
+            <ion-select okText="Ok" cancelText="Annuler" [(ngModel)]="data.usage"  formControlName="usage">
+                <ion-option value="Residence principale">Résidence principale</ion-option>
+                <ion-option value="Residence secondaire">Résidence secondaire</ion-option>
+                <ion-option value="Investissement locatif">Investissement locatif</ion-option>
+            </ion-select>
+        </ion-item>
+</ion-list>
+<button block primary type="submit" [disabled]="!devisForm.valid">Suivant
+      </button>
+
+</form>
+</ion-content>

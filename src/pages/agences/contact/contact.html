@@ -1,0 +1,49 @@
+<ion-header>
+    <ion-navbar primary>
+        <button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Contact</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+ <form [formGroup]="contactForm" (ngSubmit)="send(subject.value, message.value, nom.value, prenom.value, tel.value, mail.value)" >
+<ion-list>
+          <ion-item>
+            <ion-label >
+                Nom</ion-label>
+            <ion-input type="text" #nom   formControlName="nom"></ion-input>
+        </ion-item>
+          <ion-item>
+            <ion-label >
+                Prénom</ion-label>
+            <ion-input type="text" #prenom   formControlName="prenom"></ion-input>
+        </ion-item>
+          <ion-item>
+            <ion-label >
+                Téléphone</ion-label>
+            <ion-input type="number" #tel   formControlName="tel"></ion-input>
+        </ion-item>
+          <ion-item>
+            <ion-label >
+                Mail</ion-label>
+            <ion-input type="email" #mail   formControlName="mail"></ion-input>
+        </ion-item>
+          <ion-item>
+            <ion-label >
+                Sujet</ion-label>
+            <ion-input type="text" #subject   formControlName="subject"></ion-input>
+        </ion-item>
+         <ion-item>
+            <ion-label stacked>Message</ion-label>
+            <ion-textarea rows="6" placeHolder="N'oubliez pas de transmettre vos coordonnées"  #message  formControlName="message"></ion-textarea>
+           
+        </ion-item>
+</ion-list>
+<button  primary type="submit" [disabled]="!contactForm.valid">Envoyer
+      </button>
+
+</form>
+</ion-content>
